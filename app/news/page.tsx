@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Icon } from "@/components/Icons";
 import Link from "next/link";
 import { NewsGrid } from "@/components/NewsGrid";
 import { PageHero } from "@/components/PageHero";
@@ -66,11 +67,7 @@ export default function NewsPage() {
             {forthcoming.map((f) => (
               <article key={f.title}>
                 <div className="research-top">
-                  <svg width="36" height="36" viewBox="0 0 40 40" aria-hidden="true">
-                    <path d="M9 4h16l8 8v24H9z" fill="none" stroke="#1C1F3B" strokeWidth="2.5" strokeLinejoin="round" />
-                    <path d="M25 4v8h8" fill="none" stroke="#1C1F3B" strokeWidth="2.5" strokeLinejoin="round" />
-                    <path d="M14 20h14M14 25h14M14 30h9" stroke="#D6A13A" strokeWidth="2.5" strokeLinecap="round" />
-                  </svg>
+                  <Icon name="research" size={36} />
                   <span className="soon">Coming soon</span>
                 </div>
                 <span className="news-cat">{f.category}</span>

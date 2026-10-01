@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { Icon } from "@/components/Icons";
 import { PageHero } from "@/components/PageHero";
 import { Photo } from "@/components/Photo";
 import { CtaBand } from "@/components/Sections";
@@ -11,15 +12,6 @@ export const metadata: Metadata = {
     "African kingships and chieftaincies are living systems of governance. How Isintu Samakhosi works with Amakhosi, traditional councils and royal houses.",
   alternates: { canonical: "/traditional-leadership" },
 };
-
-const G = "#D6A13A";
-const I = "#1C1F3B";
-const N = "#3E5B45";
-const icon = (children: ReactNode) => (
-  <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
-    {children}
-  </svg>
-);
 
 const why = [
   {
@@ -40,32 +32,32 @@ const whatWeDo: { title: string; body: string; icon: ReactNode }[] = [
   {
     title: "Land value",
     body: "Activate commercial awareness of land value among chiefdoms, so they can manage their own economic futures.",
-    icon: icon(<><path d="M3 34 15 14l8 12 5-7 9 15z" fill={N} /><circle cx="29" cy="9" r="4" fill={G} /></>),
+    icon: <Icon name="land" />,
   },
   {
     title: "Partnerships",
     body: "Connect traditional authorities with financial institutions, government and the private sector.",
-    icon: icon(<><circle cx="15" cy="20" r="10" fill="none" stroke={I} strokeWidth="2.5" /><circle cx="25" cy="20" r="10" fill="none" stroke={G} strokeWidth="2.5" /></>),
+    icon: <Icon name="partnerships" />,
   },
   {
     title: "Documentation",
     body: "Record and teach the governance protocols, conflict resolution and economic practices of African kingships.",
-    icon: icon(<><path d="M6 8c5-2 10-2 14 1 4-3 9-3 14-1v24c-5-2-10-2-14 1-4-3-9-3-14-1z" fill="none" stroke={I} strokeWidth="2.5" strokeLinejoin="round" /><path d="M20 9v24" stroke={G} strokeWidth="2.5" /></>),
+    icon: <Icon name="knowledge" />,
   },
   {
     title: "Policy",
     body: "Advocate for policy that recognises traditional leaders as active development partners, not honorary figures.",
-    icon: icon(<><path d="M20 4 36 13H4z" fill={G} /><path d="M9 16v14M16 16v14M24 16v14M31 16v14" stroke={I} strokeWidth="2.5" /><path d="M5 34h30" stroke={I} strokeWidth="3" strokeLinecap="round" /></>),
+    icon: <Icon name="policy" />,
   },
   {
     title: "Technology",
     body: "Integrate modern technology with traditional economies, bridging heritage and innovation.",
-    icon: icon(<><rect x="8" y="8" width="24" height="24" rx="4" fill="none" stroke={I} strokeWidth="2.5" /><path d="M20 14 26 20 20 26 14 20z" fill={G} /><path d="M20 2v6M20 32v6M2 20h6M32 20h6" stroke={I} strokeWidth="2.5" /></>),
+    icon: <Icon name="technology" />,
   },
   {
     title: "Verified need",
     body: "Use Amakhosi networks to verify community needs, so resources reach rightful beneficiaries.",
-    icon: icon(<><circle cx="18" cy="18" r="11" fill="none" stroke={I} strokeWidth="2.5" /><path d="M26 26l9 9" stroke={I} strokeWidth="3" strokeLinecap="round" /><path d="M13 18l4 4 6-7" fill="none" stroke={G} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></>),
+    icon: <Icon name="verified" />,
   },
 ];
 

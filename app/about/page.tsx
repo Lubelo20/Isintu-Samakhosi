@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Icon } from "@/components/Icons";
 import { PageHero } from "@/components/PageHero";
 import { Photo } from "@/components/Photo";
 import { CtaBand, TriadSection } from "@/components/Sections";
@@ -56,11 +57,7 @@ export default function AboutPage() {
         <div className="wrap">
           <div className="vm">
             <article className="vm-vision">
-              <svg className="vm-icon" width="52" height="52" viewBox="0 0 52 52" aria-hidden="true">
-                <path d="M26 4 48 26 26 48 4 26z" fill="none" stroke="#D6A13A" strokeWidth="2.5" />
-                <path d="M26 16 36 26 26 36 16 26z" fill="#D6A13A" />
-                <circle cx="26" cy="26" r="3.5" fill="#1C1F3B" />
-              </svg>
+              <Icon name="vision" size={52} className="vm-icon" />
               <span className="vm-label">Our vision</span>
               <span className="vm-rule" aria-hidden="true" />
               <p>
@@ -70,11 +67,7 @@ export default function AboutPage() {
               </p>
             </article>
             <article className="vm-mission">
-              <svg className="vm-icon" width="52" height="52" viewBox="0 0 52 52" aria-hidden="true">
-                <path d="M26 5 47 45H5z" fill="none" stroke="#1C1F3B" strokeWidth="2.5" />
-                <path d="M26 19 36 39H16z" fill="#D6A13A" />
-                <rect x="24" y="31" width="4" height="4" fill="#3E5B45" />
-              </svg>
+              <Icon name="mission" size={52} className="vm-icon" />
               <span className="vm-label">Our mission</span>
               <span className="vm-rule" aria-hidden="true" />
               <p>

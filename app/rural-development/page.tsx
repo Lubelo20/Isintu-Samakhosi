@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { Icon } from "@/components/Icons";
 import { PageHero } from "@/components/PageHero";
 import { Photo } from "@/components/Photo";
 import { CtaBand } from "@/components/Sections";
@@ -13,40 +14,31 @@ export const metadata: Metadata = {
   alternates: { canonical: "/rural-development" },
 };
 
-const G = "#D6A13A";
-const I = "#1C1F3B";
-const N = "#3E5B45";
-const icon = (children: ReactNode) => (
-  <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
-    {children}
-  </svg>
-);
-
 const strategy: { title: string; body: string; icon: ReactNode }[] = [
   {
     title: "Land value activation",
     body: "Helping chiefdoms commercialise communal land, including agriculture, tourism, mining and renewable energy, on their own terms.",
-    icon: icon(<><path d="M3 34 15 14l8 12 5-7 9 15z" fill={N} /><circle cx="29" cy="9" r="4" fill={G} /></>),
+    icon: <Icon name="land" />,
   },
   {
     title: "Business chamber co-ops",
     body: "Co-operative business chambers in each province, the commercial engine of traditional communities.",
-    icon: icon(<><circle cx="13" cy="15" r="6" fill={G} /><circle cx="27" cy="15" r="6" fill={I} /><path d="M3 34c0-7 4-11 10-11s10 4 10 11zM17 34c0-7 4-11 10-11s10 4 10 11z" fill={N} opacity=".85" /></>),
+    icon: <Icon name="coops" />,
   },
   {
     title: "Agricultural modernisation",
     body: "Training farmers in modern techniques while respecting indigenous agricultural knowledge.",
-    icon: icon(<><path d="M20 36V18" stroke={N} strokeWidth="2.5" strokeLinecap="round" /><path d="M20 20C20 12 14 8 7 8c0 8 6 12 13 12zM20 24c0-7 5-11 13-11 0 7-5 11-13 11z" fill={G} /><path d="M8 36h24" stroke={I} strokeWidth="2.5" strokeLinecap="round" /></>),
+    icon: <Icon name="agriculture" />,
   },
   {
     title: "Community marketplaces",
     body: "Physical and digital marketplaces where rural producers sell directly, cutting out exploitative middlemen.",
-    icon: icon(<><path d="M4 16 20 5l16 11z" fill={G} /><path d="M8 16v18h24V16" fill="none" stroke={I} strokeWidth="2.5" /><rect x="16" y="23" width="8" height="11" fill={N} /></>),
+    icon: <Icon name="marketplace" />,
   },
   {
     title: "Microloans and savings",
     body: "Access to capital through community-owned financial structures.",
-    icon: icon(<><ellipse cx="20" cy="28" rx="13" ry="5" fill={I} /><ellipse cx="20" cy="21" rx="13" ry="5" fill={N} /><ellipse cx="20" cy="14" rx="13" ry="5" fill={G} /></>),
+    icon: <Icon name="savings" />,
   },
 ];
 

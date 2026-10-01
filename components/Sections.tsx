@@ -1,7 +1,7 @@
 // Sections shared between the home page and inner pages.
 import Link from "next/link";
 import { addressLine, site } from "@/lib/site";
-import { triad } from "./Icons";
+import { Icon, triad } from "./Icons";
 
 export function TriadSection({ headingLevel = 2 }: { headingLevel?: 2 | 3 }) {
   const H = headingLevel === 2 ? "h2" : "h3";
@@ -13,10 +13,10 @@ export function TriadSection({ headingLevel = 2 }: { headingLevel?: 2 | 3 }) {
           <p className="lede">Our values. Three commitments shape who we serve, how we work and what we protect.</p>
         </div>
         <div className="triad-grid">
-          {triad.map(({ name, meaning, Icon, body }) => (
+          {triad.map(({ name, meaning, icon, body }) => (
             <article key={name}>
               <span className="triad-badge">
-                <Icon />
+                <Icon name={icon} size={52} />
               </span>
               <h3>{name}</h3>
               <div className="meaning">{meaning}</div>

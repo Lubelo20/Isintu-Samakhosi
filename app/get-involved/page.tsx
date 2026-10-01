@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { Icon } from "@/components/Icons";
 import { PageHero } from "@/components/PageHero";
 import { Photo } from "@/components/Photo";
 import { ContactList } from "@/components/Sections";
@@ -14,43 +14,34 @@ export const metadata: Metadata = {
   alternates: { canonical: "/get-involved" },
 };
 
-const G = "#D6A13A";
-const I = "#1C1F3B";
-const N = "#3E5B45";
-const icon = (children: ReactNode) => (
-  <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true">
-    {children}
-  </svg>
-);
-
 const paths = [
   {
     href: "#sr-angel",
     title: "Donors and supporters",
     body: "Give to the GBV centre rollout as an SR Angel and receive a Section 18A tax certificate.",
     cta: "Give",
-    icon: icon(<><path d="M20 35S5 26 5 15a8 8 0 0 1 15-4 8 8 0 0 1 15 4c0 11-15 20-15 20z" fill={G} /><path d="M20 12v14M13 19h14" stroke={I} strokeWidth="2.5" strokeLinecap="round" /></>),
+    icon: <Icon name="donors" size={44} />,
   },
   {
     href: "#partners",
     title: "Partners and funders",
     body: "Direct CSI or ESD budget into programmes that build rural and township economies.",
     cta: "Partner",
-    icon: icon(<><circle cx="15" cy="20" r="10" fill="none" stroke={I} strokeWidth="2.5" /><circle cx="25" cy="20" r="10" fill="none" stroke={G} strokeWidth="2.5" /></>),
+    icon: <Icon name="partnerships" size={44} />,
   },
   {
     href: "#councils",
     title: "Traditional councils",
     body: "Request a business chamber or GBV centre for your community. Built with you, not imposed.",
     cta: "Connect",
-    icon: icon(<><path d="M20 4 36 34H4z" fill="none" stroke={I} strokeWidth="2.5" /><path d="M20 16 28 31H12z" fill={G} /></>),
+    icon: <Icon name="councils" size={44} />,
   },
   {
     href: "#volunteer",
     title: "Volunteers and researchers",
     body: "Share your skills in finance, law, agriculture, technology and research with community enterprises.",
     cta: "Volunteer",
-    icon: icon(<><path d="M20 36V18" stroke={N} strokeWidth="2.5" strokeLinecap="round" /><path d="M20 20C20 12 14 8 7 8c0 8 6 12 13 12zM20 24c0-7 5-11 13-11 0 7-5 11-13 11z" fill={G} /></>),
+    icon: <Icon name="volunteers" size={44} />,
   },
 ];
 

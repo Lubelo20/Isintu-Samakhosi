@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { Icon } from "@/components/Icons";
 import { PageHero } from "@/components/PageHero";
 import { Photo } from "@/components/Photo";
 import { CtaBand } from "@/components/Sections";
@@ -14,46 +15,36 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about/governance" },
 };
 
-// Geometric icons in the site's beadwork style (indigo, gold, green).
-const G = "#D6A13A";
-const I = "#1C1F3B";
-const N = "#3E5B45";
-const icon = (children: ReactNode) => (
-  <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
-    {children}
-  </svg>
-);
-
 const glance = [
   {
     title: "Independent Board",
     body: "Directors of high moral standing, with Amakhosi representation.",
-    icon: icon(<><path d="M20 4 36 34H4z" fill="none" stroke={I} strokeWidth="2.5" /><path d="M20 16 28 31H12z" fill={G} /></>),
+    icon: <Icon name="board" />,
   },
   {
     title: "Non-partisan",
     body: "No alignment with, or support for, any political party or candidate.",
-    icon: icon(<><circle cx="20" cy="20" r="15" fill="none" stroke={I} strokeWidth="2.5" /><path d="M9 20h22" stroke={G} strokeWidth="3" strokeLinecap="round" /></>),
+    icon: <Icon name="nonPartisan" />,
   },
   {
     title: "Zero tolerance",
     body: "For sexual exploitation and abuse, across all operations (PSEA).",
-    icon: icon(<><path d="M20 4 34 10v10c0 8-6 13-14 16C12 33 6 28 6 20V10z" fill="none" stroke={I} strokeWidth="2.5" /><path d="M14 20l4 4 8-9" fill="none" stroke={G} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></>),
+    icon: <Icon name="safeguarding" />,
   },
   {
     title: "Registered",
     body: `Registered NPO ${site.npo} and Public Benefit Organisation ${site.pbo}.`,
-    icon: icon(<><rect x="7" y="5" width="26" height="30" rx="3" fill="none" stroke={I} strokeWidth="2.5" /><path d="M13 14h14M13 20h14M13 26h8" stroke={G} strokeWidth="2.5" strokeLinecap="round" /></>),
+    icon: <Icon name="registered" />,
   },
 ];
 
 const ethicIcons: Record<string, ReactNode> = {
-  Integrity: icon(<><path d="M20 3 37 20 20 37 3 20z" fill="none" stroke={I} strokeWidth="2.5" /><path d="M20 12 28 20 20 28 12 20z" fill={G} /></>),
-  Dignity: icon(<><circle cx="20" cy="13" r="6" fill={G} /><path d="M8 35c0-8 5-13 12-13s12 5 12 13z" fill={I} /></>),
-  Accountability: icon(<><circle cx="20" cy="20" r="16" fill="none" stroke={I} strokeWidth="2.5" /><path d="M13 20l5 5 9-10" fill="none" stroke={G} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></>),
-  Impartiality: icon(<><path d="M20 6v26M8 12h24M12 32h16" stroke={I} strokeWidth="2.5" strokeLinecap="round" /><path d="M8 12 3 22h10zM32 12l-5 10h10z" fill={G} /></>),
-  Confidentiality: icon(<><rect x="8" y="17" width="24" height="18" rx="3" fill={I} /><path d="M13 17v-4a7 7 0 0 1 14 0v4" fill="none" stroke={I} strokeWidth="2.5" /><circle cx="20" cy="26" r="3" fill={G} /></>),
-  Stewardship: icon(<><path d="M20 36V18" stroke={N} strokeWidth="2.5" strokeLinecap="round" /><path d="M20 20C20 12 14 8 7 8c0 8 6 12 13 12zM20 24c0-7 5-11 13-11 0 7-5 11-13 11z" fill={G} /><path d="M10 36h20" stroke={I} strokeWidth="2.5" strokeLinecap="round" /></>),
+  Integrity: <Icon name="integrity" />,
+  Dignity: <Icon name="dignity" />,
+  Accountability: <Icon name="accountability" />,
+  Impartiality: <Icon name="impartiality" />,
+  Confidentiality: <Icon name="confidentiality" />,
+  Stewardship: <Icon name="stewardship" />,
 };
 
 const frameworks = [
