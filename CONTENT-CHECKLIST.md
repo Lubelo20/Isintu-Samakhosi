@@ -4,21 +4,21 @@ The website is complete and shows no placeholders to visitors. Where facts were 
 
 The client-facing version, with priorities and a launch checklist, is `docs/client-information-request.pdf`. This file maps each item to where it goes in the code.
 
-Last updated: 27 September 2026.
+Last updated: 1 October 2026.
 
 ## Decisions
 
 | # | Question | Where it shows | Notes |
 |---|---|---|---|
-| 1 | **Legal name:** "Isintu Samakhosi Institution NPC" (brief, Umlazi Food Bank banner) or "Sintu Samakhosi Institute NPC" (live site credentials, shield logo)? | Footer, Transparency, schema (`lib/site.ts`) | The site currently uses the brief's version. |
+| 1 | **Legal name:** "Isintu Samakhosi Institution NPC" (brief, Umlazi Food Bank banner), "Sintu Samakhosi Institute NPC" (live site credentials, shield logo) or "Isintu Samakhosi Institute NPC" (organisational structure, 28 Sep 2026)? | Footer, Transparency, schema (`lib/site.ts`) | The site currently uses the brief's version. |
 | 2 | Does **Section 18A** apply to all donations, or only to the SR Angel (GBV) programme? | Get Involved trust badges, Governance, Transparency | The site says "qualifying donations". |
-| 3 | Is the **Prof. / Dr** title correct for Nomagugu Ngobese? | About, Leadership, News | The live site says "Prof."; her award plaque says "Dr". |
+| 3 | ~~Is the **Prof. / Dr** title correct for Nomagugu Ngobese?~~ | About, Leadership, News | Resolved 28 Sep 2026: the organisational structure says "Prof." |
 
 ## Facts and figures
 
 | # | Item | Where it goes |
 |---|---|---|
-| 4 | Remaining **board members**: names, roles, short bios and photos | `lib/about.ts` → Leadership page |
+| 4 | NEC/EXCO names and roles received 28 Sep 2026 (`structure`, `executive` in `lib/about.ts`). Still needed: **photos and short bios** for the executive members, the **Deputy Chairperson**, and the spelling of "Dzimbiri" (the chart also shows "Dzimbi") | `lib/about.ts` → Leadership page |
 | 5 | **Partner kingdoms, chiefdoms and councils** (with their permission) | Traditional Leadership, Where we work |
 | 6 | **GBV rollout progress**: councils signed so far out of 25 | `COUNCILS_TARGET` / `councilsReached` in `app/gbv-centres/page.tsx` |
 | 7 | **GBV pre-deployment documents 5 to 8** | `gbvSteps` in `components/Sections.tsx` |
@@ -39,7 +39,7 @@ Last updated: 27 September 2026.
 | # | Item | Where it goes |
 |---|---|---|
 | 14 | PDFs: CIPC certificate, NPO certificate, PBO/18A letter, PSEA policy, Code of Conduct, annual reports | `public/documents/` and links on Transparency. Visitors can request copies by email for now. |
-| 15 | The **Information Officer's** name, if someone other than the head of the Institution is designated | Privacy notice |
+| 15 | ~~Information Officer~~ Resolved 28 Sep 2026: POPIA office is Andile Sizwe Phahla and Fani Mhlongo. Confirm which of them is registered with the Information Regulator as Information Officer | Privacy notice |
 | 16 | **Legal review** of the privacy notice before launch | Privacy notice |
 | 17 | **Resend API key** so the enquiry form emails info@isintusamakhosi.org.za | `RESEND_API_KEY` environment variable |
 

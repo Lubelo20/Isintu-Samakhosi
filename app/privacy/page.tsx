@@ -46,7 +46,7 @@ export default function PrivacyPage() {
             </p>
             <h2>Information Officer</h2>
             <p>
-              Under POPIA, the head of the Institution acts as its Information Officer. You can reach the Information Officer at{" "}
+              The Institution has a dedicated POPIA office, run by Andile Sizwe Phahla and Fani Mhlongo. You can reach the Information Officer at{" "}
               <a className="text-link" href={`mailto:${site.email}?subject=${encodeURIComponent("For the attention of the Information Officer")}`}>
                 {site.email}
               </a>

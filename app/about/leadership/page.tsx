@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { Photo } from "@/components/Photo";
 import { CtaBand } from "@/components/Sections";
-import { leadership } from "@/lib/about";
+import { executive, leadership, structure } from "@/lib/about";
 
 export const metadata: Metadata = {
   title: "Leadership and board",
   description:
-    "Meet the leadership of Isintu Samakhosi Institution: Founding President Andile Phahla, Deputy President Lindiwe Dzimbiri and National Spokesperson Prof. Nomagugu Ngobese.",
+    "Meet the leadership of Isintu Samakhosi Institution: the National Executive Council and Executive Committee, led by Founding President Andile Phahla.",
   alternates: { canonical: "/about/leadership" },
 };
 
@@ -17,7 +17,7 @@ export default function LeadershipPage() {
       <PageHero
         image="phahla-speaking"
         title="Leadership and board"
-        lede="Governed by a Board of Directors with expertise in law, finance, heritage studies, community development and governance, including representation from the Amakhosi network."
+        lede="The Institution is led by its National Executive Council (NEC) and Executive Committee (EXCO), with expertise in law, finance, heritage, technology and community development, including representation from the Amakhosi network."
       />
 
       <section>
@@ -51,6 +51,47 @@ export default function LeadershipPage() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="surface">
+        <div className="wrap">
+          <div className="section-head">
+            <h2>Organisational structure</h2>
+            <p className="lede">The offices of the National Executive Council and Executive Committee.</p>
+          </div>
+          <div className="org-grid">
+            {structure.map((o) => (
+              <article key={o.title}>
+                <h3>{o.title}</h3>
+                <dl>
+                  {o.holders.map(([role, name]) => (
+                    <div key={role}>
+                      <dt>{role}</dt>
+                      <dd>{name}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap split">
+          <div>
+            <h2>Executive members</h2>
+          </div>
+          <dl className="std-list exec-list">
+            {executive.map((m) => (
+              <div key={m.name}>
+                <dt>{m.name}</dt>
+                <dd className="role-meta">{m.role}</dd>
+                <dd>{m.note}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 

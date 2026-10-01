@@ -35,12 +35,13 @@ export const leadership: Person[] = [
     name: "Andile Sizwe Phahla",
     slug: "andile-phahla",
     summary: "Businessman, philanthropist and institution-builder with more than 20 years advancing dignity and development in KwaZulu-Natal and beyond.",
-    role: "Founding President and Director",
+    role: "Founding President",
     photo: "phahla-portrait",
     bio: [
       "Andile Sizwe Phahla is a businessman, philanthropist and institution-builder with more than 20 years of experience advancing dignity, opportunity and sustainable development in underserved communities in KwaZulu-Natal, Southern Africa and beyond.",
       "His leadership began in youth league structures, rising to Regional Secretary in eThekwini, Councillor in the eThekwini Municipality, Secretary of the Minority Party Block, Provincial Secretary, NEC member and Special Advisor to a trade union president. At bilateral level he served as Treasurer of the Afri Development Fund, a South Africa–Botswana partnership launched in Botswana to address matters of key economic and development importance, anchoring his work in continental advancement and cross-border financial architecture.",
       "Through the Andile Phahla Foundation he adopted Happy Hours School, a special-needs school in Hammarsdale, and launched Operation Vusa Ithemba, an annual school shoe drive for underprivileged learners.",
+      "He is the architect of the Institution's frameworks, its SARS Public Officer, the CEO of Ithongo AI and an author.",
       "As Founding President he promotes the integration of traditional leadership structures, modern enterprise and technology as catalysts for village-based economies. A spiritual leader and practitioner of indigenous knowledge systems, he advocates for Ubuntu principles in leadership, economic empowerment and social development.",
     ],
     quote: "This is not a career. It is a calling.",
@@ -49,7 +50,7 @@ export const leadership: Person[] = [
     name: "Lindiwe Cathrine Dzimbiri",
     slug: "lindiwe-dzimbiri",
     summary: "Royal-born leader of the Dzimbiri Clan who leads the Institution's engagement with Amakhosi, traditional councils and royal houses.",
-    role: "Deputy President and International Ambassador",
+    role: "Deputy President, International Ambassador and NPO Compliance Lead",
     photo: "dzimbiri-portrait",
     bio: [
       "Lindiwe Cathrine Dzimbiri is a royal-born leader from the Dzimbiri Clan royal lineage who carries the active duty of Inkosikazi: a living responsibility to preserve cultural identity, guide ethical leadership and bridge heritage and modern institutions. Within Nguni tradition, women of royal standing are custodians of lineage, advisors in governance and anchors of social stability. She embodies umthombo wesizwe, the source of the nation.",
@@ -63,7 +64,7 @@ export const leadership: Person[] = [
     name: "Prof. Nomagugu Patience Ngobese",
     slug: "nomagugu-ngobese",
     summary: "Cultural leader and educator known for reviving the Nomkhubulwane cultural practices, with three decades of work on indigenous knowledge.",
-    role: "Board member and National Spokesperson",
+    role: "Chief Heritage and Indigenous Knowledge Officer",
     photo: "ngobese-portrait",
     bio: [
       "Prof. Nomagugu Patience Ngobese is a cultural leader, educator and activist whose work spans more than three decades of advancing cultural inclusion, indigenous knowledge systems and Ubuntu-based values. She is a Board Member for Ubuntu Heritage Governance, National Spokesperson for Ubuntuology and a Royal Council Endorsed Leader.",
@@ -73,5 +74,95 @@ export const leadership: Person[] = [
     ],
     quote: "Akukhona ukuhlakanipha kwami, abangithumile.",
     quoteNote: "It is not my wisdom, but those who sent me.",
+  },
+];
+
+// National Executive Council (NEC) and Executive Committee (EXCO), from the client's
+// consolidated organisational structure (28 September 2026).
+export type Office = { title: string; holders: [role: string, name: string][] };
+
+export const structure: Office[] = [
+  {
+    title: "Presidency",
+    holders: [
+      ["President", "Andile Sizwe Phahla"],
+      ["Deputy President", "HRH Lindiwe Cathrine Dzimbiri"],
+    ],
+  },
+  {
+    title: "Secretariat",
+    holders: [
+      ["Secretary-General", "Khanyisile Ndlela"],
+      ["Deputy Secretary-General", "Nteboheleng Mahapa"],
+    ],
+  },
+  {
+    title: "National Chairperson",
+    holders: [
+      ["Chairperson", "Bhekithimba Basil Cele"],
+      ["Deputy Chairperson", "To be announced"],
+    ],
+  },
+  {
+    title: "Treasury, finance and compliance",
+    holders: [
+      ["Finance and Compliance", "Fani Mhlongo"],
+      ["Finance Officer", "Nobuhle Sitole"],
+    ],
+  },
+  {
+    title: "POPIA office",
+    holders: [
+      ["Information Officer", "Andile Sizwe Phahla"],
+      ["Compliance", "Fani Mhlongo"],
+    ],
+  },
+  {
+    title: "Technology and systems",
+    holders: [["Chief Technology and Systems Officer", "Ntando Sizwe Phahla"]],
+  },
+  {
+    title: "Heritage and indigenous knowledge",
+    holders: [["Chief Heritage and Indigenous Knowledge Officer", "Prof. Nomagugu Patience Ngobese"]],
+  },
+  {
+    title: "National organisation and programme management",
+    holders: [
+      ["National Organiser", "Senzo Nxumalo"],
+      ["Senior Project Managers", "Nonhlanhla Phahla and Thabani Mhlongo"],
+    ],
+  },
+  {
+    title: "Mobilisation and community engagement",
+    holders: [["Provincial structures", "Organisers, media and communications"]],
+  },
+];
+
+// NEC and EXCO members not profiled in full above.
+export const executive: { name: string; role: string; note: string }[] = [
+  {
+    name: "Bhekithimba Basil Cele",
+    role: "Chairperson",
+    note: "A registered director of the Institution.",
+  },
+  {
+    name: "Khanyisile Ndlela",
+    role: "Secretary-General",
+    note: "Custodian of the Ubuntu Relationship Engine (URE) and a PhD candidate.",
+  },
+  {
+    name: "Nteboheleng Mahapa",
+    role: "Deputy Secretary-General",
+    note: "Brings a background in research and community development, and is a PhD candidate in Anthropology.",
+  },
+  {
+    name: "Senzo Nxumalo",
+    role: "National Organiser",
+    note: "Induna and spokesperson of the Hlubi Nation.",
+  },
+  {
+    name: "Ntando Sizwe Phahla",
+    role: "Chief Technology and Systems Officer",
+    note: "Responsible for Ithongo AI. Founder and CEO of Sibahle Technology, co-founder of Ithongo AI and CTO of Andile Consulting.",
   },
 ];
