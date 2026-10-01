@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useActionState } from "react";
-import { provinces, roles } from "@/lib/site";
-import { sendEnquiry, type FormState } from "./actions";
+import { useState, useSyncExternalStore, type FormEvent } from "react";
+import { checkEnquiry, type EnquiryErrors } from "@/lib/enquiry";
+import { provinces, roles, site } from "@/lib/site";
 
 const topicToRole: Record<string, (typeof roles)[number]> = {
   partner: "Potential partner or funder",
@@ -13,10 +13,31 @@ const topicToRole: Record<string, (typeof roles)[number]> = {
   media: "Media",
 };
 
-export function ContactForm({ topic }: { topic?: string }) {
-  const [state, action, pending] = useActionState<FormState, FormData>(sendEnquiry, { status: "idle" });
-  const e = state.errors ?? {};
-  const val = state.values ?? {};
+const noop = () => () => {};
+
+export function ContactForm() {
+  const [status, setStatus] = useState<"idle" | "error" | "ok">("idle");
+  const [e, setErrors] = useState<EnquiryErrors>({});
+  // Links like /contact?topic=council preselect "I am a". Read in the browser, since the page is static.
+  const topicRole = useSyncExternalStore(
+    noop,
+    () => topicToRole[new URLSearchParams(window.location.search).get("topic") ?? ""] ?? "",
+    () => "",
+  );
+  const [picked, setRole] = useState<string | null>(null);
+  const role = picked ?? topicRole;
+
+  const submit = (ev: FormEvent<HTMLFormElement>) => {
+    ev.preventDefault();
+    const { errors, spam, mailto } = checkEnquiry(new FormData(ev.currentTarget));
+    setErrors(errors);
+    if (Object.keys(errors).length) {
+      setStatus("error");
+      return;
+    }
+    if (!spam) window.location.href = mailto;
+    setStatus("ok");
+  };
   const err = (k: string) =>
     e[k] ? (
       <p className="error" id={`${k}-error`}>
@@ -25,30 +46,34 @@ export function ContactForm({ topic }: { topic?: string }) {
     ) : null;
   const a11y = (k: string) => ({ "aria-invalid": e[k] ? true : undefined, "aria-describedby": e[k] ? `${k}-error` : undefined });
 
-  if (state.status === "ok") {
+  if (status === "ok") {
     return (
       <div className="notice ok" role="status">
-        {state.message}
+        Thank you. Your email app should now open with your enquiry ready to send. If it does not, email us at{" "}
+        <a className="text-link" href={`mailto:${site.email}`}>
+          {site.email}
+        </a>
+        .
       </div>
     );
   }
 
   return (
-    <form className="form" action={action} noValidate>
-      {state.status === "error" && (
+    <form className="form" onSubmit={submit} noValidate>
+      {status === "error" && (
         <div className="notice err" role="alert">
-          {state.message}
+          Please fix the highlighted fields.
         </div>
       )}
       <div className="row">
         <div className="field">
           <label htmlFor="name">Full name</label>
-          <input id="name" name="name" autoComplete="name" required defaultValue={val.name} {...a11y("name")} />
+          <input id="name" name="name" autoComplete="name" required {...a11y("name")} />
           {err("name")}
         </div>
         <div className="field">
           <label htmlFor="email">Email address</label>
-          <input id="email" name="email" type="email" autoComplete="email" required defaultValue={val.email} {...a11y("email")} />
+          <input id="email" name="email" type="email" autoComplete="email" required {...a11y("email")} />
           {err("email")}
         </div>
       </div>
@@ -57,20 +82,21 @@ export function ContactForm({ topic }: { topic?: string }) {
           <label htmlFor="phone">
             Phone number <span className="hint">(optional)</span>
           </label>
-          <input id="phone" name="phone" type="tel" autoComplete="tel" defaultValue={val.phone} {...a11y("phone")} />
+          <input id="phone" name="phone" type="tel" autoComplete="tel" {...a11y("phone")} />
           {err("phone")}
         </div>
         <div className="field">
           <label htmlFor="organisation">
             Organisation <span className="hint">(optional)</span>
           </label>
-          <input id="organisation" name="organisation" autoComplete="organization" defaultValue={val.organisation} />
+          <input id="organisation" name="organisation" autoComplete="organization" />
         </div>
       </div>
       <div className="row">
         <div className="field">
           <label htmlFor="role">I am a</label>
-          <select id="role" name="role" required defaultValue={val.role ?? (topic ? topicToRole[topic] : "") ?? ""} {...a11y("role")}>
+          <select id="role" name="role" required value={role}
+            onChange={(ev) => setRole(ev.target.value)} {...a11y("role")}>
             <option value="" disabled>
               Choose one
             </option>
@@ -84,7 +110,7 @@ export function ContactForm({ topic }: { topic?: string }) {
           <label htmlFor="province">
             Province <span className="hint">(optional)</span>
           </label>
-          <select id="province" name="province" defaultValue={val.province ?? ""} {...a11y("province")}>
+          <select id="province" name="province" {...a11y("province")}>
             <option value="">Choose a province</option>
             {provinces.map((p) => (
               <option key={p}>{p}</option>
@@ -97,11 +123,11 @@ export function ContactForm({ topic }: { topic?: string }) {
         <label htmlFor="authority">
           Traditional authority or chiefdom <span className="hint">(optional)</span>
         </label>
-        <input id="authority" name="authority" defaultValue={val.authority} />
+        <input id="authority" name="authority" />
       </div>
       <div className="field">
         <label htmlFor="message">Message</label>
-        <textarea id="message" name="message" required defaultValue={val.message} {...a11y("message")} />
+        <textarea id="message" name="message" required {...a11y("message")} />
         {err("message")}
       </div>
       <div className="hp" aria-hidden="true">
@@ -122,8 +148,8 @@ export function ContactForm({ topic }: { topic?: string }) {
         {err("consent")}
       </div>
       <div>
-        <button className="btn btn-ink" type="submit" disabled={pending}>
-          {pending ? "Sending…" : "Send enquiry"}
+        <button className="btn btn-ink" type="submit">
+          Send enquiry
         </button>
       </div>
     </form>

@@ -41,7 +41,7 @@ Last updated: 1 October 2026.
 | 14 | PDFs: CIPC certificate, NPO certificate, PBO/18A letter, PSEA policy, Code of Conduct, annual reports | `public/documents/` and links on Transparency. Visitors can request copies by email for now. |
 | 15 | ~~Information Officer~~ Resolved 28 Sep 2026: POPIA office is Andile Sizwe Phahla and Fani Mhlongo. Confirm which of them is registered with the Information Regulator as Information Officer | Privacy notice |
 | 16 | **Legal review** of the privacy notice before launch | Privacy notice |
-| 17 | **Resend API key** so the enquiry form emails info@isintusamakhosi.org.za | `RESEND_API_KEY` environment variable |
+| 17 | **Enquiry form delivery:** the static site opens the visitor's email app. To send directly, the client signs up to a form service (e.g. Web3Forms) with info@isintusamakhosi.org.za | `lib/enquiry.ts`, `app/contact/ContactForm.tsx` |
 
 ## News
 

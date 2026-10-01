@@ -1,16 +1,18 @@
 import type { NextConfig } from "next";
 
+// The site is a fully static export: `npm run build` writes plain HTML, CSS, JS and
+// images to `out/`, which any static host can serve (GitHub Pages, Netlify, cPanel).
+// Set NEXT_PUBLIC_BASE_PATH when the site lives in a sub-folder, e.g. "/Isintu-Samakhosi"
+// for https://lubelo20.github.io/Isintu-Samakhosi/. Leave it empty on the real domain.
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const nextConfig: NextConfig = {
-  images: { formats: ["image/avif", "image/webp"] },
-  // URLs follow the live site. Aliases from the first redesign draft redirect here.
-  async redirects() {
-    return [
-      { source: "/programmes", destination: "/our-work", permanent: true },
-      { source: "/programmes/:slug", destination: "/our-work/:slug", permanent: true },
-      { source: "/partner", destination: "/get-involved", permanent: true },
-      { source: "/about-us", destination: "/about", permanent: true },
-    ];
-  },
+  output: "export",
+  basePath,
+  // Every page is written as folder/index.html, which static hosts serve without rewrites.
+  trailingSlash: true,
+  // No image server in a static export: lib/image-loader.ts serves the files as they are.
+  images: { loader: "custom", loaderFile: "./lib/image-loader.ts" },
 };
 
 export default nextConfig;

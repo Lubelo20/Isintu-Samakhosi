@@ -9,8 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
 };
 
-export default async function ContactPage({ searchParams }: PageProps<"/contact">) {
-  const { topic } = await searchParams;
+export default function ContactPage() {
   return (
     <>
       <PageHero
@@ -19,7 +18,7 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
         <div className="wrap">
           <div>
             <h2 style={{ fontSize: "1.8rem", marginBottom: 24 }}>Send an enquiry</h2>
-            <ContactForm topic={typeof topic === "string" ? topic : undefined} />
+            <ContactForm />
           </div>
           <div>
             <h2 style={{ fontSize: "1.8rem", marginBottom: 24 }}>Contact details</h2>
